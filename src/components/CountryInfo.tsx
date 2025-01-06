@@ -1,4 +1,6 @@
+import { useGetCountriesQuery } from "../api/apiSlice";
 import { CountryDetail } from "../types";
+import Borders from "./Borders";
 import DetailItem from "./DetailItem";
 
 interface IProps {
@@ -6,6 +8,14 @@ interface IProps {
 }
 
 function CountryInfo({ country }: IProps) {
+  const { codes: codesMap } = useGetCountriesQuery(undefined, {
+    selectFromResult: ({ data }) => ({ codes: data?.codes })
+  });
+
+  const bordersWithName = codesMap
+    ? country.borders.map((code) => codesMap[code])
+    : [];
+
   return (
     <div className="flex flex-wrap lg:flex-nowrap gap-32 items-center">
       <div className="shrink  grow  w-full">
@@ -40,6 +50,9 @@ function CountryInfo({ country }: IProps) {
               {country.languages.join(", ")}
             </DetailItem>
           </div>
+        </div>
+        <div>
+          <Borders borders={bordersWithName} />
         </div>
       </div>
     </div>
