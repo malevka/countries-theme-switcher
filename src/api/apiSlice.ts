@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { CountrySummary } from "../types";
+import { API_ENDPOINTS } from "../config/apiConfig";
 
-type GetCountriesResponse = {
+interface GetCountriesResponse {
   name: { common: string };
   flags: {
     png: string;
@@ -11,15 +12,35 @@ type GetCountriesResponse = {
   region: string;
   population: number;
   capital: string;
-}[];
+}
 
 export const apiSlice = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "https://restcountries.com/v3.1/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
   endpoints: (builder) => ({
-    getCountries: builder.query<CountrySummary[], void>({
-      query: () => "/all?fields=name,flags,population,capital,region",
-      transformResponse: (response: GetCountriesResponse) =>
-        response.map(({ name, region, flags, population, capital }) => ({ name: name.common, region, flags, population, capital: capital[0] }))
+    getCountries: builder.query<
+      { countries: CountrySummary[]; regions: string[] },
+      void
+    >({
+      query: () => {
+        const { url, fields } = API_ENDPOINTS.GET_COUNTRIES;
+        return `${url}?fields=${fields.join(",")}`;
+      },
+      transformResponse: (response: GetCountriesResponse[]) => {
+        const countries: CountrySummary[] = [];
+        const regions = new Set<string>();
+        response.forEach(({ name, region, flags, population, capital }) => {
+          countries.push({
+            name: name.common,
+            region,
+            flags,
+            population,
+            capital: capital[0]
+          });
+          regions.add(region);
+        });
+
+        return { countries, regions: Array.from(regions) };
+      }
     })
   })
 });

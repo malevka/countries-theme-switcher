@@ -1,35 +1,22 @@
-import Header from "../layout/Header";
-import Countrieslist from "./CountriesList";
 import { useGetCountriesQuery } from "../api/apiSlice";
 import FilterByRegion from "../components/FilterByRegion";
-
 import FilterByName from "../components/FilterByName";
+import HomeContent from "../components/HomeContent";
 
 function Home() {
-  const { data: countries = [], isLoading, isSuccess, isError, error } = useGetCountriesQuery();
-
-  let content: React.ReactNode;
-  let filterByRegion: React.ReactNode;
-  if (isLoading) {
-    content = <div>Loading...</div>;
-  } else if (isSuccess) {
-    const regions = Array.from(new Set(countries.map(({ region }) => region)));
-    filterByRegion = content = <FilterByRegion regions={regions} />;
-    content = <Countrieslist countries={countries} />;
-  } else if (isError) {
-    content = <div>{error.toString()}</div>;
-  }
+  const { data: countriesData = { countries: [], regions: [] }, isLoading, isSuccess, isError } = useGetCountriesQuery();
   return (
-    <>
-      <Header />
-      <div className="container mt-12 mx-auto">
-        <div className="flex justify-between items-center">
-          {isSuccess && <FilterByName />}
-          {filterByRegion}
-        </div>
-        <div className="flex flex-wrap gap-6 mt-12">{content}</div>
+    <div className="bg-[#fafafa] pt-12 h-full">
+      <div className="flex justify-between items-center">
+        {isSuccess && (
+          <>
+            <FilterByName />
+            <FilterByRegion regions={countriesData.regions} />
+          </>
+        )}
       </div>
-    </>
+      <HomeContent isError={isError} isLoading={isLoading} countries={countriesData.countries} />
+    </div>
   );
 }
 
