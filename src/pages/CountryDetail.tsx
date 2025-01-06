@@ -1,11 +1,10 @@
 import { Link, useParams } from "react-router";
 import { useGetCountryByNameQuery } from "../api/apiSlice";
-import { memo } from "react";
 import CountryDetailContent from "../components/CountryDetailContent";
 import { Button } from "@mui/base/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
-function Detail() {
+function CountryDetail() {
   const params = useParams();
   const {
     data: country,
@@ -29,4 +28,4 @@ function Detail() {
   );
 }
 
-export default memo(Detail);
+export default CountryDetail;
