@@ -3,6 +3,7 @@ import { useGetCountryByNameQuery } from "../api/apiSlice";
 import CountryDetailContent from "../components/CountryDetailContent";
 import { Button } from "@mui/base/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { useLayoutEffect } from "react";
 
 function CountryDetail() {
   const params = useParams();
@@ -12,8 +13,12 @@ function CountryDetail() {
     isError
   } = useGetCountryByNameQuery(params.name!);
 
+  useLayoutEffect(() => {
+    document.documentElement.style.setProperty("--bg-color", "white");
+  }, []);
+
   return (
-    <div className="bg-white py-20 px-7 lg:px-0">
+    <div className="py-20 px-7 lg:px-0">
       <Link to="/">
         <Button className="flex items-center gap-5 mb-32 md:mb-20  bg-white shadow-md py-4 px-12 text-base rounded tracking-wider font-light">
           <KeyboardBackspaceIcon /> Back
