@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { CountrySummary } from "../types";
+import CardItem from "./CardItem";
 
 function Card({
   name: countryName,
@@ -18,18 +19,9 @@ function Card({
       />
       <div className="mt-7 mb-12 px-6">
         <h2 className="text-xl font-bold mb-5">{countryName}</h2>
-        <p className="mb-2">
-          <span className="font-medium">Population: </span>
-          {population}
-        </p>
-        <p className="mb-2">
-          <span className="font-medium">Region: </span>
-          {region}
-        </p>
-        <p>
-          <span className="font-medium">Capital: </span>
-          {capital}
-        </p>
+        <CardItem title="Population">{population}</CardItem>
+        <CardItem title="Region">{region}</CardItem>
+        <CardItem title="Capital">{capital}</CardItem>
       </div>
     </div>
   );
