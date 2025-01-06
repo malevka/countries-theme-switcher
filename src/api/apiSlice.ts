@@ -83,7 +83,7 @@ export const apiSlice = createApi({
             currencies
           }
         ] = response;
-        const nativeName = Object.values(name.nativeName)[0].common;
+        const nativeName = Object.values(name.nativeName)[0]?.common ?? "";
         const curr = Object.values(currencies).map(({ name }) => name);
         return {
           name: name.common,
