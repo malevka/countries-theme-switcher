@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import Home from "./pages/Home";
+import CountryDetail from "./pages/CountryDetail";
 import Layout from "./layout/Layout";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <Layout>
       <Routes>
         <Route index element={<Home />} />
+        <Route path="country/:name" element={<CountryDetail />} />
       </Routes>
     </Layout>
   );
