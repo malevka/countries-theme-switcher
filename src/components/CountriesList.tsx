@@ -1,10 +1,13 @@
 import { CountrySummary } from "../types";
-import Card from "../components/Card";
+import Card from "./Card";
 import { useAppSelector } from "../store/hooks";
-import { selectName, selectRegion } from "../store/filtersSlice";
+import { selectRegion, selectName } from "../store/filtersSlice";
 import { useMemo } from "react";
 
-function Countrieslist({ countries }: { countries: CountrySummary[] }) {
+interface IProps {
+  countries: CountrySummary[];
+}
+function CountriesList({ countries }: IProps) {
   const region = useAppSelector(selectRegion);
   const searchName = useAppSelector(selectName);
   const sortedCountries = useMemo(() => [...countries].sort((a, b) => a.name.localeCompare(b.name)), [countries]);
@@ -15,10 +18,10 @@ function Countrieslist({ countries }: { countries: CountrySummary[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-[repeat(2,260px)] lg:grid-cols-[repeat(3,260px)] xl:grid-cols-[repeat(4,260px)] justify-center justify-items-center md:justify-between w-full gap-20">
       {filteredCountries.map((country) => (
-        <Card key={country.name} {...country} />
+          <Card key={country.name} {...country} />
       ))}
     </div>
   );
 }
 
-export default Countrieslist;
+export default CountriesList;
