@@ -1,19 +1,24 @@
-import { Select, SelectRootSlotProps } from "@mui/base/Select";
+import { Select } from "@mui/base/Select";
 import { Option } from "@mui/base/Option";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { regionFilterChanged, selectRegion } from "../store/filtersSlice";
-import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
-import { forwardRef } from "react";
+import { useMemo } from "react";
+import FilterButton from "./FilterButton";
 interface IProps {
   regions: string[];
 }
+
 function FilterByRegion({ regions }: IProps) {
   const ALL_COUNTRIES = "All";
 
-  const sortedRegions = [...regions].sort();
+  const sortedRegions = useMemo(() => [...regions].sort(), [regions]);
   const region = useAppSelector(selectRegion);
   const dispatch = useAppDispatch();
-  const handleFilterChanged = (newValue: string | null) => {
+
+  const handleFilterChanged = (
+    _: React.MouseEvent | React.KeyboardEvent | React.FocusEvent | null,
+    newValue: string | null
+  ) => {
     if (newValue === ALL_COUNTRIES) {
       dispatch(regionFilterChanged(null));
       return;
@@ -21,22 +26,11 @@ function FilterByRegion({ regions }: IProps) {
     dispatch(regionFilterChanged(newValue));
   };
 
-  const Button = forwardRef(function Button<TValue extends object, Multiple extends boolean>(
-    props: SelectRootSlotProps<TValue, Multiple>,
-    ref: React.ForwardedRef<HTMLButtonElement>
-  ) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { ownerState, ...other } = props;
-    return (
-      <button type="button" {...other} ref={ref}>
-        {other.children}
-        <ExpandMoreRoundedIcon />
-      </button>
-    );
-  });
-
   const slotProps = {
-    root: { className: "hover:bg-gray-200 bg-white pl-7 pr-5 py-5 rounded-md w-52 text-left flex justify-between shadow-md" },
+    root: {
+      className:
+        "hover:bg-gray-200 bg-white pl-7 pr-5 py-5 rounded-md w-52 text-left flex justify-between shadow-md"
+    },
     popup: { className: "bg-white rounded-md w-52 mt-1" }
   };
   const optionsProps = {
@@ -48,13 +42,17 @@ function FilterByRegion({ regions }: IProps) {
       <Select
         value={region}
         placeholder="Filter by Region"
-        onChange={(_, newValue) => handleFilterChanged(newValue)}
+        onChange={handleFilterChanged}
         slotProps={slotProps}
         slots={{
-          root: Button
+          root: FilterButton
         }}
       >
-        <Option key={ALL_COUNTRIES} value={ALL_COUNTRIES} slotProps={optionsProps}>
+        <Option
+          key={ALL_COUNTRIES}
+          value={ALL_COUNTRIES}
+          slotProps={optionsProps}
+        >
           {ALL_COUNTRIES}
         </Option>
         {sortedRegions.map((region) => (
