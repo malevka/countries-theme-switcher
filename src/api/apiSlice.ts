@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CountrySummary } from "../types";
+import { CountryDetail, CountrySummary } from "../types";
 import { API_ENDPOINTS } from "../config/apiConfig";
 
 interface GetCountriesResponse {
@@ -12,6 +12,18 @@ interface GetCountriesResponse {
   region: string;
   population: number;
   capital: string;
+}
+
+interface GetCountryByNameResponse extends GetCountriesResponse {
+  name: {
+    common: string;
+    nativeName: { [x: string]: { official: string; common: string } };
+  };
+  borders: string[];
+  subregion: string;
+  tld: string[];
+  currencies: { [x: string]: { name: string; symbol: string } };
+  languages: { [x: string]: string };
 }
 
 export const apiSlice = createApi({
@@ -41,7 +53,44 @@ export const apiSlice = createApi({
 
         return { countries, regions: Array.from(regions) };
       }
+    }),
+    getCountryByName: builder.query<CountryDetail, string>({
+      query: (name) => {
+        const { url, fields } = API_ENDPOINTS.GET_COUNTRY_BY_NAME;
+        return `${url}/${name}?fields=${fields.join(",")}`;
+      },
+      transformResponse: (response: GetCountryByNameResponse[]) => {
+        const [
+          {
+            name,
+            region,
+            flags,
+            population,
+            capital,
+            subregion,
+            tld,
+            languages,
+            borders,
+            currencies
+          }
+        ] = response;
+        const nativeName = Object.values(name.nativeName)[0].common;
+        const curr = Object.values(currencies).map(({ name }) => name);
+        return {
+          name: name.common,
+          region,
+          flags,
+          population,
+          capital: capital[0],
+          nativeName,
+          subregion,
+          topLevelDomain: tld,
+          languages: Object.values(languages),
+          borders,
+          currencies: curr
+        };
+      }
     })
   })
 });
-export const { useGetCountriesQuery } = apiSlice;
+export const { useGetCountriesQuery, useGetCountryByNameQuery } = apiSlice;
