@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <div className="pt-12 h-full">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap gap-12">
         {isSuccess && (
           <>
             <FilterByName />
