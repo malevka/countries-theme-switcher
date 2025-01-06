@@ -4,8 +4,10 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { regionFilterChanged, selectRegion } from "../store/filtersSlice";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import { forwardRef } from "react";
-
-function FilterByRegion({ regions }: { regions: string[] }) {
+interface IProps {
+  regions: string[];
+}
+function FilterByRegion({ regions }: IProps) {
   const ALL_COUNTRIES = "All";
 
   const sortedRegions = [...regions].sort();
