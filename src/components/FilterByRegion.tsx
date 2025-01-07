@@ -29,12 +29,15 @@ function FilterByRegion({ regions }: IProps) {
   const slotProps = {
     root: {
       className:
-        "hover:bg-gray-200 bg-white pl-7 pr-5 py-5 rounded-md w-52 text-left flex justify-between shadow-md"
+        "hover:bg-dark-light hover:text-white bg-white pl-7 pr-5 py-5 rounded-md w-52 text-left flex justify-between shadow-md dark:bg-dark-light  dark:hover:bg-gray dark:hover:text-dark"
     },
-    popup: { className: "bg-white rounded-md w-52 mt-1" }
+    popup: { className: "bg-white rounded-md w-52 mt-1 dark:bg-dark-light" }
   };
   const optionsProps = {
-    root: { className: "py-4 px-7 rounded-md hover:bg-gray-200 " }
+    root: {
+      className:
+        "py-4 px-7 rounded-md hover:bg-dark-light hover:text-white dark:bg-dark-light dark:text-white dark:hover:bg-gray dark:hover:text-dark"
+    }
   };
 
   return (

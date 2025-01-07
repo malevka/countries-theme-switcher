@@ -3,6 +3,7 @@ import FilterByRegion from "../components/FilterByRegion";
 import FilterByName from "../components/FilterByName";
 import HomeContent from "../components/HomeContent";
 import { useLayoutEffect } from "react";
+import { useTheme } from "../ThemeContext";
 
 function Home() {
   const {
@@ -12,9 +13,12 @@ function Home() {
     isError
   } = useGetCountriesQuery();
 
+  const { theme } = useTheme();
   useLayoutEffect(() => {
-    document.documentElement.style.setProperty("--bg-color", "#fafafa");
-  }, []);
+    const bgColor =
+      theme === "dark" ? "var(--dark-color)" : "var(--grey-color)";
+    document.documentElement.style.setProperty("--bg-color", bgColor);
+  }, [theme]);
 
   return (
     <div className="pt-12 h-full">

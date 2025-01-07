@@ -9,7 +9,7 @@ function Border({ name }: IProps) {
     <Link to={`/country/${name}`}>
       <Button
         key={name}
-        className="flex items-center gap-5 mb-4  bg-white shadow-md py-4 px-12 text-base rounded tracking-wider font-light"
+        className="flex items-center gap-5 mb-4  bg-white shadow-md py-4 px-12 text-base rounded tracking-wider font-light dark:bg-dark-light dark:text-white"
       >
         {name}
       </Button>

@@ -16,7 +16,12 @@ function FilterByName() {
     <Input
       value={name}
       onChange={handleFilterChanged}
-      className="px-7 py-4 bg-white w-full lg:w-96 shadow-md  rounded-md"
+      className="px-7 py-4 bg-white w-full lg:w-96 shadow-md  rounded-md dark:bg-dark-light"
+      slotProps={{
+        input: {
+          className: "dark:bg-dark-light dark:placeholder:text-white"
+        }
+      }}
       aria-label="Search for a country"
       placeholder="Search for a country..."
       startAdornment={<SearchIcon className="mr-7 text-gray-400 " />}

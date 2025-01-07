@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+  --gray-color: #fafafa;
+  --white-color: white;
+  --dark-light-color:#2b3743;
+  --dark-color:#202d36;
+  --black-color:black;
+}
+
 body {
-  background-color: var(--bg-color, white);
+  background-color: var(--bg-color, var(--white-color));
 }
