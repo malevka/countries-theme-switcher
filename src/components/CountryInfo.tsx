@@ -9,7 +9,7 @@ interface IProps {
 
 function CountryInfo({ country }: IProps) {
   const { codes: codesMap } = useGetCountriesQuery(undefined, {
-    selectFromResult: ({ data }) => ({ codes: data?.codes })
+    selectFromResult: ({ data }) => ({ codes: data?.codes }),
   });
 
   const bordersWithName = codesMap
@@ -17,20 +17,20 @@ function CountryInfo({ country }: IProps) {
     : [];
 
   return (
-    <div className="flex flex-wrap lg:flex-nowrap gap-32 items-center">
-      <div className="shrink  grow  w-full">
+    <div className="flex flex-wrap gap-12 lg:flex-nowrap lg:gap-28">
+      <div className="w-11/12 shrink grow">
         <img
           src={country.flags.svg}
           alt={country.flags.alt}
-          className="w-full h-full object-cover"
+          className="aspect-[4/3] w-full"
           loading="lazy"
         />
       </div>
 
-      <div className="shrink grow w-full items-center">
-        <div className="flex flex-col lg:flex-row  justify-between lg:items-center mb-20 gap-16">
+      <div className="w-full shrink grow items-center py-10">
+        <div className="mb-14 flex flex-col justify-between gap-14 lg:flex-row lg:items-center lg:px-2">
           <div>
-            <h1 className="text-4xl font-bold mb-14 lg:mb-11">
+            <h1 className="mb-14 text-5xl font-bold lg:mb-10 lg:text-3xl">
               {country.name}
             </h1>
             <DetailItem title={"Native Name"}>{country.nativeName}</DetailItem>
@@ -51,7 +51,7 @@ function CountryInfo({ country }: IProps) {
             </DetailItem>
           </div>
         </div>
-        <div>
+        <div className="lg:px-2">
           <Borders borders={bordersWithName} />
         </div>
       </div>

@@ -17,7 +17,7 @@ function FilterByRegion({ regions }: IProps) {
 
   const handleFilterChanged = (
     _: React.MouseEvent | React.KeyboardEvent | React.FocusEvent | null,
-    newValue: string | null
+    newValue: string | null,
   ) => {
     if (newValue === ALL_COUNTRIES) {
       dispatch(regionFilterChanged(null));
@@ -29,15 +29,18 @@ function FilterByRegion({ regions }: IProps) {
   const slotProps = {
     root: {
       className:
-        "hover:bg-dark-light hover:text-white bg-white pl-7 pr-5 py-5 rounded-md w-52 text-left flex justify-between shadow-md dark:bg-dark-light  dark:hover:bg-gray dark:hover:text-dark"
+        "flex w-96 items-center justify-between rounded-md bg-white py-8 pl-6 pr-3 text-left text-2xl shadow-custom-sm dark:bg-dark-light dark:hover:bg-gray-light dark:hover:text-dark lg:w-52 lg:py-4 lg:text-sm",
     },
-    popup: { className: "bg-white rounded-md w-52 mt-1 dark:bg-dark-light" }
+    popup: {
+      className:
+        "mt-1 w-96 lg:w-52 rounded-md bg-white py-7 lg:py-3 dark:bg-dark-light",
+    },
   };
   const optionsProps = {
     root: {
       className:
-        "py-4 px-7 rounded-md hover:bg-dark-light hover:text-white dark:bg-dark-light dark:text-white dark:hover:bg-gray dark:hover:text-dark"
-    }
+        "rounded-md px-7 py-2 lg:py-1 text-2xl lg:text-sm hover:bg-dark-light hover:text-white dark:bg-dark-light dark:text-white dark:hover:bg-gray-light dark:hover:text-dark",
+    },
   };
 
   return (
@@ -48,7 +51,7 @@ function FilterByRegion({ regions }: IProps) {
         onChange={handleFilterChanged}
         slotProps={slotProps}
         slots={{
-          root: FilterButton
+          root: FilterButton,
         }}
       >
         <Option

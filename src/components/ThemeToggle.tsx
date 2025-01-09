@@ -8,14 +8,14 @@ function ThemeToggle() {
   return (
     <Button
       onClick={toggleTheme}
-      className="flex items-center gap-5 bg-white dark:bg-dark-light py-4 px-12 text-base rounded tracking-wider font-medium"
+      className="flex items-center gap-5 lg:gap-2 bg-white dark:bg-dark-light py-4  text-2xl lg:text-base rounded tracking-normal font-normal"
     >
       {theme === "light" ? (
         <BedtimeOutlinedIcon />
       ) : (
         <BedtimeIcon sx={{ color: "white" }} />
       )}
-      Dark mode
+      Dark Mode
     </Button>
   );
 }

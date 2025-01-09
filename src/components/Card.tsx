@@ -7,18 +7,20 @@ function Card({
   population,
   region,
   capital,
-  flags
+  flags,
 }: CountrySummary) {
   return (
-    <div className="w-full md:w-64 shadow-md rounded-md overflow-hidden dark:bg-dark-light">
+    <div className="w-full overflow-hidden rounded-lg shadow-custom-sm dark:bg-dark-light lg:rounded-md">
       <img
         src={flags.svg}
         alt={flags.alt}
-        className="h-80 md:h-40 mx-auto w-full object-cover"
+        className="mx-auto h-80 w-full object-cover md:h-40"
         loading="lazy"
       />
-      <div className="mt-7 mb-12 px-6">
-        <h2 className="text-xl font-bold mb-5">{countryName}</h2>
+      <div className="px-12 pb-20 pt-14 lg:px-6 lg:pb-10 lg:pt-6">
+        <h2 className="mb-10 text-3xl font-bold lg:mb-4 lg:text-base">
+          {countryName}
+        </h2>
         <CardItem title="Population">{population}</CardItem>
         <CardItem title="Region">{region}</CardItem>
         <CardItem title="Capital">{capital}</CardItem>

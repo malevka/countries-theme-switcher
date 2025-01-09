@@ -5,9 +5,9 @@ interface IProps {
 
 function DetailItem({ title, children }: IProps) {
   return children ? (
-    <p className="mb-11 lg:mb-5">
-      <span className="font-medium">{title}: </span>
-      {children}
+    <p className="mb-7 text-3xl lg:mb-2 lg:text-base">
+      <span className="lg:font-medium">{title}: </span>
+      <span className="font-extralight">{children}</span>
     </p>
   ) : null;
 }

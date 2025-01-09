@@ -4,11 +4,15 @@
 
 
 :root {
-  --gray-color: #fafafa;
-  --white-color: white;
-  --dark-light-color:#2b3743;
-  --dark-color:#202d36;
-  --black-color:black;
+  --color-white: white;
+  --color-black: black;
+
+  --color-gray-light: #fafafa;
+  --color-gray: #8b8b8b;
+
+  --color-dark-light: #2b3743;
+  --color-dark: #202d36;
+
 }
 
 body {

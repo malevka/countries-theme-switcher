@@ -11,21 +11,27 @@ function CountryDetail() {
   const {
     data: country,
     isLoading,
-    isError
+    isError,
   } = useGetCountryByNameQuery(params.name!);
 
   const { theme } = useTheme();
   useLayoutEffect(() => {
     const bgColor =
-      theme === "dark" ? "var(--dark-color)" : "var(--white-color)";
+      theme === "dark" ? "var(--color-dark)" : "var(--color-white)";
     document.documentElement.style.setProperty("--bg-color", bgColor);
   }, [theme]);
 
   return (
-    <div className="py-20 px-7 lg:px-0">
+    <div className="px-7 py-20 lg:px-0">
       <Link to="/">
-        <Button className="flex items-center gap-5 mb-32 md:mb-20  bg-white shadow-md py-4 px-12 text-base rounded tracking-wider font-light dark:bg-dark-light dark:text-white">
-          <KeyboardBackspaceIcon /> Back
+        <Button className="mb-32 flex items-center gap-5 rounded bg-white py-3 pl-10 pr-11 text-3xl font-light tracking-tight shadow-custom-md dark:bg-dark-light dark:text-white md:mb-20 lg:gap-2 lg:py-2 lg:pl-7 lg:pr-9 lg:text-base lg:tracking-wider">
+          <KeyboardBackspaceIcon
+            sx={{
+              width: { xs: "2.5rem", lg: "1.5rem" },
+              height: { xs: "2.5rem", lg: "1.5rem" },
+            }}
+          />
+          Back
         </Button>
       </Link>
       <CountryDetailContent

@@ -10,19 +10,19 @@ function Home() {
     data: countriesData = { countries: [], regions: [] },
     isLoading,
     isSuccess,
-    isError
+    isError,
   } = useGetCountriesQuery();
 
   const { theme } = useTheme();
   useLayoutEffect(() => {
     const bgColor =
-      theme === "dark" ? "var(--dark-color)" : "var(--grey-color)";
+      theme === "dark" ? "var(--color-dark)" : "var(--color-gray-light)";
     document.documentElement.style.setProperty("--bg-color", bgColor);
   }, [theme]);
 
   return (
-    <div className="pt-12 h-full">
-      <div className="flex justify-between items-center flex-wrap gap-12">
+    <div className="h-full pt-12">
+      <div className="flex flex-wrap items-center justify-between gap-20 lg:gap-12">
         {isSuccess && (
           <>
             <FilterByName />

@@ -3,11 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      "dark-light": "var(--dark-light-color)",
-      gray: "var(--gray-color)",
-      white: "var(--white-color)",
-      dark: "var(--dark-color)",
-      black: "var(--black-color)"
+      "dark-light": "var(--color-dark-light)",
+      "gray-light": "var(--color-gray-light)",
+      gray: "var(--color-gray)",
+      white: "var(--color-white)",
+      dark: "var(--color-dark)",
+      black: "var(--color-black)"
     },
     extend: {
       animation: {
@@ -19,6 +20,10 @@ export default {
           "50%": { transform: "scale(0)" },
           "100%": { transform: "scale(1)" }
         }
+      },
+      boxShadow: {
+        "custom-sm": "0 0 10px rgba(0, 0, 0, 0.18)",
+        "custom-md": "0 0 10px rgba(0, 0, 0, 0.4)"
       }
     }
   },
