@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CountryDetail, CountrySummary } from "../types";
 import { API_ENDPOINTS } from "../config/apiConfig";
+import { CountryDetail, CountrySummary } from "../types";
 
 interface GetCountriesResponse {
   name: { common: string };
@@ -52,16 +52,16 @@ export const apiSlice = createApi({
               name: name.common,
               region,
               flags,
-              population,
-              capital: capital[0]
+              population: new Intl.NumberFormat().format(population),
+              capital: capital[0],
             });
             regions.add(region);
             codes[cca3] = name.common;
-          }
+          },
         );
 
         return { countries, regions: Array.from(regions), codes };
-      }
+      },
     }),
     getCountryByName: builder.query<CountryDetail, string>({
       query: (name) => {
@@ -80,8 +80,8 @@ export const apiSlice = createApi({
             tld,
             languages,
             borders,
-            currencies
-          }
+            currencies,
+          },
         ] = response;
         const nativeName = Object.values(name.nativeName)[0]?.common ?? "";
         const curr = Object.values(currencies).map(({ name }) => name);
@@ -89,17 +89,17 @@ export const apiSlice = createApi({
           name: name.common,
           region,
           flags,
-          population,
+          population: new Intl.NumberFormat().format(population),
           capital: capital[0],
           nativeName,
           subregion,
           topLevelDomain: tld,
           languages: Object.values(languages),
           borders,
-          currencies: curr
+          currencies: curr,
         };
-      }
-    })
-  })
+      },
+    }),
+  }),
 });
 export const { useGetCountriesQuery, useGetCountryByNameQuery } = apiSlice;

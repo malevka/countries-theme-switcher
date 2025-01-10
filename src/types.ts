@@ -2,7 +2,7 @@ export interface CountrySummary {
   name: string;
   region: string;
   capital: string;
-  population: number;
+  population: string;
   flags: { png: string; svg: string; alt: string };
 }
 
