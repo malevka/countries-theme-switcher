@@ -10,7 +10,7 @@ interface IProps {
 
 function HomeContent({ isError, isLoading, countries }: IProps) {
   return (
-    <div className="mt-16 flex flex-wrap gap-6 lg:mt-12">
+    <div className="mt-12 flex flex-wrap gap-6 sm:mt-16 lg:mt-12">
       {isLoading ? (
         <LoadingSpinner />
       ) : isError ? (

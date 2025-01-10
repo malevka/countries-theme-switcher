@@ -5,9 +5,11 @@ interface IProps {
 }
 function Layout({ children }: IProps) {
   return (
-    <div className="h-screen flex flex-col text-black dark:text-white">
+    <div className="flex h-screen flex-col text-black dark:text-white">
       <Header />
-      <div className="container mx-auto grow ">{children}</div>
+      <div className="grow px-8 md:container md:mx-auto md:px-0">
+        {children}
+      </div>
     </div>
   );
 }

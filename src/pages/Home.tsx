@@ -1,8 +1,8 @@
-import { useGetCountriesQuery } from "../api/apiSlice";
-import FilterByRegion from "../components/FilterByRegion";
-import FilterByName from "../components/FilterByName";
-import HomeContent from "../components/HomeContent";
 import { useLayoutEffect } from "react";
+import { useGetCountriesQuery } from "../api/apiSlice";
+import FilterByName from "../components/FilterByName";
+import FilterByRegion from "../components/FilterByRegion";
+import HomeContent from "../components/HomeContent";
 import { useTheme } from "../ThemeContext";
 import PageTitle from "./PageTitle";
 
@@ -25,21 +25,21 @@ function Home() {
     <>
       <PageTitle title="All Countries" />
 
-    <div className="h-full pt-12">
-      <div className="flex flex-wrap items-center justify-between gap-20 lg:gap-12">
-        {isSuccess && (
-          <>
-            <FilterByName />
-            <FilterByRegion regions={countriesData.regions} />
-          </>
-        )}
+      <div className="h-full pt-12">
+        <div className="flex flex-wrap items-center justify-between gap-12 sm:gap-20 lg:gap-12">
+          {isSuccess && (
+            <>
+              <FilterByName />
+              <FilterByRegion regions={countriesData.regions} />
+            </>
+          )}
+        </div>
+        <HomeContent
+          isError={isError}
+          isLoading={isLoading}
+          countries={countriesData.countries}
+        />
       </div>
-      <HomeContent
-        isError={isError}
-        isLoading={isLoading}
-        countries={countriesData.countries}
-      />
-    </div>
     </>
   );
 }

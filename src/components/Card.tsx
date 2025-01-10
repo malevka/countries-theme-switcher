@@ -11,14 +11,16 @@ function Card({
 }: CountrySummary) {
   return (
     <div className="w-full overflow-hidden rounded-lg shadow-custom-sm dark:bg-dark-light lg:rounded-md">
-      <img
-        src={flags.svg}
-        alt={flags.alt}
-        className="mx-auto h-80 w-full object-cover md:h-40"
-        loading="lazy"
-      />
-      <div className="px-12 pb-20 pt-14 lg:px-6 lg:pb-10 lg:pt-6">
-        <h2 className="mb-10 text-3xl font-bold lg:mb-4 lg:text-base">
+      <div className="aspect-[16/9] w-full overflow-hidden md:h-40">
+        <img
+          src={flags.svg}
+          alt={flags.alt}
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div className="px-6 pb-10 pt-14 sm:px-12 sm:pb-20 sm:pt-14 lg:px-6 lg:pb-10 lg:pt-6">
+        <h2 className="mb-6 text-xl font-bold sm:mb-10 sm:text-3xl lg:mb-4 lg:text-base">
           {countryName}
         </h2>
         <CardItem title="Population">{population}</CardItem>

@@ -5,8 +5,8 @@ interface IProps {
 }
 function Borders({ borders }: IProps) {
   return borders.length > 0 ? (
-    <div className="flex flex-wrap items-center gap-5 lg:gap-3">
-      <div className="mb-5 w-full text-3xl tracking-wide lg:mb-0 lg:w-auto lg:text-base lg:font-medium lg:tracking-normal">
+    <div className="flex flex-wrap items-center gap-2 sm:gap-5 lg:gap-3">
+      <div className="mb-2 w-full text-xl tracking-wide sm:mb-5 sm:text-3xl lg:mb-0 lg:w-auto lg:text-base lg:font-medium lg:tracking-normal">
         Border Countries:{" "}
       </div>
       {borders.map((name) => (

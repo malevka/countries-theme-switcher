@@ -22,15 +22,15 @@ function CountryInfo({ country }: IProps) {
         <img
           src={country.flags.svg}
           alt={country.flags.alt}
-          className="aspect-[4/3] w-full"
+          className="aspect-[4/3] w-full object-cover"
           loading="lazy"
         />
       </div>
 
-      <div className="w-full shrink grow items-center py-10">
-        <div className="mb-14 flex flex-col justify-between gap-14 lg:flex-row lg:items-center lg:px-2">
+      <div className="w-full shrink grow items-center py-3 sm:py-10">
+        <div className="mb-14 flex flex-col justify-between gap-7 sm:gap-14 lg:flex-row lg:items-center lg:px-2">
           <div>
-            <h1 className="mb-14 text-5xl font-bold lg:mb-10 lg:text-3xl">
+            <h1 className="mb-7 text-3xl font-bold sm:mb-14 sm:text-5xl lg:mb-10 lg:text-3xl">
               {country.name}
             </h1>
             <DetailItem title={"Native Name"}>{country.nativeName}</DetailItem>

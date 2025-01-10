@@ -26,7 +26,7 @@ function CountriesList({ countries }: IProps) {
       : filteredByRegion;
   }, [sortedCountries, region, searchName]);
   return (
-    <div className="grid w-full grid-cols-1 gap-20 px-14 md:grid-cols-[repeat(2,1fr)] md:justify-between md:px-0 lg:grid-cols-[repeat(3,1fr)] xl:grid-cols-[repeat(4,1fr)]">
+    <div className="grid w-full grid-cols-1 gap-20 sm:px-20 md:grid-cols-[repeat(2,1fr)] md:justify-between md:px-0 lg:grid-cols-[repeat(3,1fr)] xl:grid-cols-[repeat(4,1fr)]">
       {filteredCountries.map((country) => (
         <Link key={country.name} to={`/country/${country.name}`}>
           <Card {...country} />

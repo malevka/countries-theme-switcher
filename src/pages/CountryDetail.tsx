@@ -1,9 +1,9 @@
-import { Link, useParams } from "react-router";
-import { useGetCountryByNameQuery } from "../api/apiSlice";
-import CountryDetailContent from "../components/CountryDetailContent";
 import { Button } from "@mui/base/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useLayoutEffect } from "react";
+import { Link, useParams } from "react-router";
+import { useGetCountryByNameQuery } from "../api/apiSlice";
+import CountryDetailContent from "../components/CountryDetailContent";
 import { useTheme } from "../ThemeContext";
 import PageTitle from "./PageTitle";
 
@@ -25,23 +25,24 @@ function CountryDetail() {
   return (
     <>
       <PageTitle title={`Country Detail - ${params.name}`} />
-      <Link to="/">
-        <Button className="mb-32 flex items-center gap-5 rounded bg-white py-3 pl-10 pr-11 text-3xl font-light tracking-tight shadow-custom-md dark:bg-dark-light dark:text-white md:mb-20 lg:gap-2 lg:py-2 lg:pl-7 lg:pr-9 lg:text-base lg:tracking-wider">
-          <KeyboardBackspaceIcon
-            sx={{
-              width: { xs: "2.5rem", lg: "1.5rem" },
-              height: { xs: "2.5rem", lg: "1.5rem" },
-            }}
-          />
-          Back
-        </Button>
-      </Link>
-      <CountryDetailContent
-        country={country}
-        isLoading={isLoading}
-        isError={isError}
-      />
-    </div>
+      <div className="px-3 py-10 sm:px-7 sm:py-20 lg:px-0">
+        <Link to="/">
+          <Button className="mb-16 flex items-center gap-5 rounded bg-white py-3 pl-5 pr-5 text-xl font-light tracking-tight shadow-custom-md dark:bg-dark-light dark:text-white sm:mb-32 sm:pl-10 sm:pr-10 sm:text-3xl md:mb-20 lg:gap-2 lg:py-2 lg:pl-7 lg:pr-9 lg:text-base lg:tracking-wider">
+            <KeyboardBackspaceIcon
+              sx={{
+                width: { sm: "2.5rem", lg: "1.5rem" },
+                height: { sm: "2.5rem", lg: "1.5rem" },
+              }}
+            />
+            Back
+          </Button>
+        </Link>
+        <CountryDetailContent
+          country={country}
+          isLoading={isLoading}
+          isError={isError}
+        />
+      </div>
     </>
   );
 }

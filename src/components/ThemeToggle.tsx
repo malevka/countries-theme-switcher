@@ -5,15 +5,25 @@ import { useTheme } from "../ThemeContext";
 
 function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+
+  const sizeStyles = {
+    width: { xs: "1rem", sm: "1.5rem" },
+    height: { xs: "1rem", sm: "1.5rem" },
+  };
   return (
     <Button
       onClick={toggleTheme}
-      className="flex items-center gap-5 lg:gap-2 bg-white dark:bg-dark-light py-4  text-2xl lg:text-base rounded tracking-normal font-normal"
+      className="flex items-center gap-1 rounded bg-white py-4 text-base font-normal tracking-normal dark:bg-dark-light sm:gap-5 sm:text-2xl lg:gap-2 lg:text-base"
     >
       {theme === "light" ? (
-        <BedtimeOutlinedIcon />
+        <BedtimeOutlinedIcon sx={sizeStyles} />
       ) : (
-        <BedtimeIcon sx={{ color: "white" }} />
+        <BedtimeIcon
+          sx={{
+            color: "white",
+            ...sizeStyles,
+          }}
+        />
       )}
       Dark Mode
     </Button>
