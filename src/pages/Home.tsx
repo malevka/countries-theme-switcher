@@ -4,6 +4,7 @@ import FilterByName from "../components/FilterByName";
 import HomeContent from "../components/HomeContent";
 import { useLayoutEffect } from "react";
 import { useTheme } from "../ThemeContext";
+import PageTitle from "./PageTitle";
 
 function Home() {
   const {
@@ -21,6 +22,9 @@ function Home() {
   }, [theme]);
 
   return (
+    <>
+      <PageTitle title="All Countries" />
+
     <div className="h-full pt-12">
       <div className="flex flex-wrap items-center justify-between gap-20 lg:gap-12">
         {isSuccess && (
@@ -36,6 +40,7 @@ function Home() {
         countries={countriesData.countries}
       />
     </div>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import { Button } from "@mui/base/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useLayoutEffect } from "react";
 import { useTheme } from "../ThemeContext";
+import PageTitle from "./PageTitle";
 
 function CountryDetail() {
   const params = useParams();
@@ -22,7 +23,8 @@ function CountryDetail() {
   }, [theme]);
 
   return (
-    <div className="px-7 py-20 lg:px-0">
+    <>
+      <PageTitle title={`Country Detail - ${params.name}`} />
       <Link to="/">
         <Button className="mb-32 flex items-center gap-5 rounded bg-white py-3 pl-10 pr-11 text-3xl font-light tracking-tight shadow-custom-md dark:bg-dark-light dark:text-white md:mb-20 lg:gap-2 lg:py-2 lg:pl-7 lg:pr-9 lg:text-base lg:tracking-wider">
           <KeyboardBackspaceIcon
@@ -40,6 +42,7 @@ function CountryDetail() {
         isError={isError}
       />
     </div>
+    </>
   );
 }
 
