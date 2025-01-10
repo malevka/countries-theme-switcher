@@ -1,5 +1,6 @@
 import { CountrySummary } from "../types";
 import Countrieslist from "./CountriesList";
+import Error from "./Error";
 import LoadingSpinner from "./LoadingSpinner";
 
 interface IProps {
@@ -14,7 +15,7 @@ function HomeContent({ isError, isLoading, countries }: IProps) {
       {isLoading ? (
         <LoadingSpinner />
       ) : isError ? (
-        <div>error</div>
+        <Error />
       ) : (
         <Countrieslist countries={countries} />
       )}
