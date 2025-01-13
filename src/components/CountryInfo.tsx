@@ -4,7 +4,7 @@ import Borders from "./Borders";
 import DetailItem from "./DetailItem";
 
 interface IProps {
-  country: CountryDetail;
+  country?: CountryDetail;
 }
 
 function CountryInfo({ country }: IProps) {
@@ -12,11 +12,12 @@ function CountryInfo({ country }: IProps) {
     selectFromResult: ({ data }) => ({ codes: data?.codes }),
   });
 
-  const bordersWithName = codesMap
-    ? country.borders.map((code) => codesMap[code])
-    : [];
+  const bordersWithName =
+    codesMap && country ? country.borders.map((code) => codesMap[code]) : [];
 
-  return (
+  return !country ? (
+    <div>Данные о стране отсутвуют</div>
+  ) : (
     <div className="flex flex-wrap gap-12 lg:flex-nowrap lg:gap-28">
       <div className="w-11/12 shrink grow">
         <img

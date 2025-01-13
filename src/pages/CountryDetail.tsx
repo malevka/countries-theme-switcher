@@ -2,7 +2,8 @@ import { Button } from "@mui/base/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { Link, useParams } from "react-router";
 import { useGetCountryByNameQuery } from "../api/apiSlice";
-import CountryDetailContent from "../components/CountryDetailContent";
+import ContentWrapper from "../components/ContentWrapper";
+import CountryInfo from "../components/CountryInfo";
 import PageTitle from "./PageTitle";
 
 function CountryDetail() {
@@ -28,11 +29,9 @@ function CountryDetail() {
             Back
           </Button>
         </Link>
-        <CountryDetailContent
-          country={country}
-          isLoading={isLoading}
-          isError={isError}
-        />
+        <ContentWrapper isError={isError} isLoading={isLoading}>
+          <CountryInfo country={country!} />
+        </ContentWrapper>
       </div>
     </>
   );

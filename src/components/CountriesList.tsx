@@ -1,14 +1,14 @@
-import { CountrySummary } from "../types";
-import Card from "./Card";
-import { useAppSelector } from "../store/hooks";
-import { selectRegion, selectName } from "../store/filtersSlice";
 import { useMemo } from "react";
 import { Link } from "react-router";
+import { selectName, selectRegion } from "../store/filtersSlice";
+import { useAppSelector } from "../store/hooks";
+import { CountrySummary } from "../types";
+import Card from "./Card";
 
 interface IProps {
-  countries: CountrySummary[];
+  countries?: CountrySummary[];
 }
-function CountriesList({ countries }: IProps) {
+function CountriesList({ countries = [] }: IProps) {
   const region = useAppSelector(selectRegion);
   const searchName = useAppSelector(selectName);
   const sortedCountries = useMemo(

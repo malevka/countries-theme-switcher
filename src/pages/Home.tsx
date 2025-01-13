@@ -1,7 +1,8 @@
 import { useGetCountriesQuery } from "../api/apiSlice";
+import ContentWrapper from "../components/ContentWrapper";
+import CountriesList from "../components/CountriesList";
 import FilterByName from "../components/FilterByName";
 import FilterByRegion from "../components/FilterByRegion";
-import HomeContent from "../components/HomeContent";
 import PageTitle from "./PageTitle";
 
 function Home() {
@@ -17,7 +18,7 @@ function Home() {
       <PageTitle title="All Countries" />
 
       <div className="h-full pt-12">
-        <div className="flex flex-wrap items-center justify-between gap-12 sm:gap-20 lg:gap-12">
+        <div className="mb-12 flex flex-wrap items-center justify-between gap-12 sm:mb-16 sm:gap-20 lg:mb-12 lg:gap-12">
           {isSuccess && (
             <>
               <FilterByName />
@@ -25,11 +26,9 @@ function Home() {
             </>
           )}
         </div>
-        <HomeContent
-          isError={isError}
-          isLoading={isLoading}
-          countries={countriesData.countries}
-        />
+        <ContentWrapper isError={isError} isLoading={isLoading}>
+          <CountriesList countries={countriesData.countries} />
+        </ContentWrapper>
       </div>
     </>
   );
