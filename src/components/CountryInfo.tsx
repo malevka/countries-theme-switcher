@@ -23,7 +23,7 @@ function CountryInfo({ country }: IProps) {
         <img
           src={country.flags.svg}
           alt={country.flags.alt}
-          className="aspect-[4/3] w-full object-cover"
+          className="w-full object-cover"
           loading="lazy"
         />
       </div>
