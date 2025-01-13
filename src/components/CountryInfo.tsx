@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 import { useGetCountriesQuery } from "../api/apiSlice";
 import { CountryDetail } from "../types";
 import Borders from "./Borders";
@@ -14,6 +16,12 @@ function CountryInfo({ country }: IProps) {
 
   const bordersWithName =
     codesMap && country ? country.borders.map((code) => codesMap[code]) : [];
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return !country ? (
     <div>Данные о стране отсутвуют</div>
