@@ -66,7 +66,7 @@ export const apiSlice = createApi({
     getCountryByName: builder.query<CountryDetail, string>({
       query: (name) => {
         const { url, fields } = API_ENDPOINTS.GET_COUNTRY_BY_NAME;
-        return `${url}/${name}?fields=${fields.join(",")}`;
+        return `${url}/${name}?fullText=true&fields=${fields.join(",")}`;
       },
       transformResponse: (response: GetCountryByNameResponse[]) => {
         const [
