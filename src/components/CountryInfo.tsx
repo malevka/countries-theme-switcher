@@ -1,7 +1,7 @@
 import { useGetCountriesQuery } from "../api/apiSlice";
 import { CountryDetail } from "../types";
 import Borders from "./Borders";
-import DetailItem from "./DetailItem";
+import InfoItem from "./InfoItem";
 
 interface IProps {
   country?: CountryDetail;
@@ -34,22 +34,32 @@ function CountryInfo({ country }: IProps) {
             <h1 className="mb-7 text-3xl font-bold sm:mb-14 sm:text-5xl lg:mb-10 lg:text-3xl">
               {country.name}
             </h1>
-            <DetailItem title={"Native Name"}>{country.nativeName}</DetailItem>
-            <DetailItem title={"Population"}>{country.population}</DetailItem>
-            <DetailItem title={"Region"}>{country.region}</DetailItem>
-            <DetailItem title={"Sub Region"}>{country.subregion}</DetailItem>
-            <DetailItem title={"Capital"}>{country.capital}</DetailItem>
+            <InfoItem title={"Native Name"} type="detail">
+              {country.nativeName}
+            </InfoItem>
+            <InfoItem title={"Population"} type="detail">
+              {country.population}
+            </InfoItem>
+            <InfoItem title={"Region"} type="detail">
+              {country.region}
+            </InfoItem>
+            <InfoItem title={"Sub Region"} type="detail">
+              {country.subregion}
+            </InfoItem>
+            <InfoItem title={"Capital"} type="detail">
+              {country.capital}
+            </InfoItem>
           </div>
           <div>
-            <DetailItem title={"Top Level Domain"}>
+            <InfoItem title={"Top Level Domain"} type="detail">
               {country.topLevelDomain.join(", ")}
-            </DetailItem>
-            <DetailItem title={"Currencies"}>
+            </InfoItem>
+            <InfoItem title={"Currencies"} type="detail">
               {country.currencies.join(", ")}
-            </DetailItem>
-            <DetailItem title={"Languages"}>
+            </InfoItem>
+            <InfoItem title={"Languages"} type="detail">
               {country.languages.join(", ")}
-            </DetailItem>
+            </InfoItem>
           </div>
         </div>
         <div className="lg:px-2">
