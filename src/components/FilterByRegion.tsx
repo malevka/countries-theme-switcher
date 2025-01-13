@@ -29,7 +29,7 @@ function FilterByRegion({ regions }: IProps) {
   const slotProps = {
     root: {
       className:
-        "flex w-60 sm:w-96 items-center justify-between rounded-md bg-white py-7 sm:py-8 pl-6  pr-3 text-left text-lg sm:text-2xl shadow-custom-sm dark:bg-dark-light dark:hover:bg-gray-light dark:hover:text-dark lg:w-52 lg:py-4 lg:text-sm",
+        "flex w-60 sm:w-96 items-center justify-between rounded-md bg-white py-7 sm:py-8 pl-6  pr-3 text-left text-lg sm:text-2xl shadow-custom-sm dark:bg-dark-light dark:hover:bg-gray-light dark:hover:text-dark lg:w-52 lg:py-4 lg:text-sm transition-bg",
     },
     popup: {
       className:

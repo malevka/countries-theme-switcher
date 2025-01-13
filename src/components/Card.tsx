@@ -10,7 +10,7 @@ function Card({
   flags,
 }: CountrySummary) {
   return (
-    <div className="w-full overflow-hidden rounded-lg shadow-custom-sm dark:bg-dark-light lg:rounded-md">
+    <div className="transition-bg w-full overflow-hidden rounded-lg shadow-custom-sm dark:bg-dark-light lg:rounded-md">
       <div className="aspect-[16/9] w-full overflow-hidden md:h-40">
         <img
           src={flags.svg}

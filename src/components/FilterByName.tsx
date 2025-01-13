@@ -16,10 +16,11 @@ function FilterByName() {
     <Input
       value={name}
       onChange={handleFilterChanged}
-      className="flex w-full rounded-md bg-white px-5 py-7 font-light shadow-custom-sm dark:bg-dark-light sm:px-14 sm:text-2xl lg:w-1/3 lg:px-7 lg:py-4 lg:text-sm"
+      className="transition-bg flex w-full rounded-md bg-white px-5 py-7 font-light shadow-custom-sm dark:bg-dark-light sm:px-14 sm:text-2xl lg:w-1/3 lg:px-7 lg:py-4 lg:text-sm"
       slotProps={{
         input: {
-          className: "dark:bg-dark-light dark:placeholder:text-white",
+          className:
+            "dark:bg-dark-light dark:placeholder:text-white transition-bg",
         },
       }}
       aria-label="Search for a country"

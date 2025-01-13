@@ -18,3 +18,8 @@
 body {
   background-color: var(--bg-color, var(--white-color));
 }
+
+
+.transition-bg {
+  transition: background-color 0.1s linear;
+}

@@ -5,7 +5,7 @@ interface IProps {
 }
 function Layout({ children }: IProps) {
   return (
-    <div className="flex min-h-screen flex-col text-black dark:bg-dark-light dark:text-white">
+    <div className="linear transition-bg flex min-h-screen flex-col text-black dark:bg-dark-light dark:text-white">
       <Header />
       <div className="grow px-8 md:container md:mx-auto md:px-4">
         {children}

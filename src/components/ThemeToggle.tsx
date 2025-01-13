@@ -13,7 +13,7 @@ function ThemeToggle() {
   return (
     <Button
       onClick={toggleTheme}
-      className="flex items-center gap-1 rounded bg-white py-4 text-base font-normal tracking-normal dark:bg-dark-light sm:gap-5 sm:text-2xl lg:gap-2 lg:text-base"
+      className="transition-bg flex items-center gap-1 rounded bg-white py-4 text-base font-normal tracking-normal dark:bg-dark-light sm:gap-5 sm:text-2xl lg:gap-2 lg:text-base"
     >
       {theme === "light" ? (
         <BedtimeOutlinedIcon sx={sizeStyles} />
