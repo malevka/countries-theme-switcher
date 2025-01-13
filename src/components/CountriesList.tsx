@@ -1,7 +1,5 @@
-import { useMemo } from "react";
 import { Link } from "react-router";
-import { selectName, selectRegion } from "../store/filtersSlice";
-import { useAppSelector } from "../store/hooks";
+import { useCountriesList } from "../hooks/useCountriesList";
 import { CountrySummary } from "../types";
 import Card from "./Card";
 
@@ -9,22 +7,7 @@ interface IProps {
   countries?: CountrySummary[];
 }
 function CountriesList({ countries = [] }: IProps) {
-  const region = useAppSelector(selectRegion);
-  const searchName = useAppSelector(selectName);
-  const sortedCountries = useMemo(
-    () => [...countries].sort((a, b) => a.name.localeCompare(b.name)),
-    [countries],
-  );
-  const filteredCountries = useMemo(() => {
-    const filteredByRegion = region
-      ? sortedCountries.filter((country) => country.region === region)
-      : sortedCountries;
-    return searchName
-      ? filteredByRegion.filter(({ name }) =>
-          name.toLowerCase().startsWith(searchName.toLowerCase()),
-        )
-      : filteredByRegion;
-  }, [sortedCountries, region, searchName]);
+  const filteredCountries = useCountriesList(countries);
   return (
     <div className="grid w-full grid-cols-1 gap-20 sm:px-20 md:grid-cols-[repeat(2,1fr)] md:justify-between md:px-0 lg:grid-cols-[repeat(3,minmax(200px,1fr))] xl:grid-cols-[repeat(4,minmax(200px,1fr))]">
       {filteredCountries.map((country) => (
