@@ -1,9 +1,7 @@
-import { useLayoutEffect } from "react";
 import { useGetCountriesQuery } from "../api/apiSlice";
 import FilterByName from "../components/FilterByName";
 import FilterByRegion from "../components/FilterByRegion";
 import HomeContent from "../components/HomeContent";
-import { useTheme } from "../ThemeContext";
 import PageTitle from "./PageTitle";
 
 function Home() {
@@ -13,13 +11,6 @@ function Home() {
     isSuccess,
     isError,
   } = useGetCountriesQuery();
-
-  const { theme } = useTheme();
-  useLayoutEffect(() => {
-    const bgColor =
-      theme === "dark" ? "var(--color-dark)" : "var(--color-gray-light)";
-    document.documentElement.style.setProperty("--bg-color", bgColor);
-  }, [theme]);
 
   return (
     <>

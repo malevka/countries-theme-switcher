@@ -1,10 +1,8 @@
 import { Button } from "@mui/base/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { useLayoutEffect } from "react";
 import { Link, useParams } from "react-router";
 import { useGetCountryByNameQuery } from "../api/apiSlice";
 import CountryDetailContent from "../components/CountryDetailContent";
-import { useTheme } from "../ThemeContext";
 import PageTitle from "./PageTitle";
 
 function CountryDetail() {
@@ -14,13 +12,6 @@ function CountryDetail() {
     isLoading,
     isError,
   } = useGetCountryByNameQuery(params.name!);
-
-  const { theme } = useTheme();
-  useLayoutEffect(() => {
-    const bgColor =
-      theme === "dark" ? "var(--color-dark)" : "var(--color-white)";
-    document.documentElement.style.setProperty("--bg-color", bgColor);
-  }, [theme]);
 
   return (
     <>
