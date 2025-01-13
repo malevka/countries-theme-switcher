@@ -30,7 +30,7 @@ function CountryInfo({ country }: IProps) {
 
       <div className="w-full shrink grow items-center py-3 sm:py-10">
         <div className="mb-14 flex flex-col justify-between gap-7 sm:gap-14 lg:flex-row lg:items-center lg:px-2">
-          <div>
+          <div className="basis-1/2">
             <h1 className="mb-7 text-3xl font-bold sm:mb-14 sm:text-5xl lg:mb-10 lg:text-3xl">
               {country.name}
             </h1>
@@ -50,7 +50,7 @@ function CountryInfo({ country }: IProps) {
               {country.capital}
             </InfoItem>
           </div>
-          <div>
+          <div className="basis-1/2">
             <InfoItem title={"Top Level Domain"} type="detail">
               {country.topLevelDomain.join(", ")}
             </InfoItem>
